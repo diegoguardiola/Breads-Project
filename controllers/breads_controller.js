@@ -1,6 +1,7 @@
 const express = require('express')
 const breads = express.Router()
 const Bread = require('../models/bread.js')
+const Baker = require('../models/baker.js')
 
 // INDEX
 breads.get('/', (req, res) => {
@@ -13,7 +14,15 @@ breads.get('/', (req, res) => {
       })
 })
 
-
+//BAKER
+breads.get('/new', (req, res) => {
+  Baker.find()
+  .then(foundBakers => {
+    res.render('new', {
+      bakers: foundBakers
+    })
+  })
+})
 
 
 // NEW
